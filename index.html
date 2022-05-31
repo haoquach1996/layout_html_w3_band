@@ -90,7 +90,7 @@
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-dsc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="buy-btn">Buy Tickets</a>
+                                <button class="btn buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="place-item">
@@ -99,7 +99,7 @@
                                 <h3 class="place-heading">Paris</h3>
                                 <p class="place-time">Sat 28 Nov 2016</p>
                                 <p class="place-dsc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="buy-btn">Buy Tickets</a>
+                                <button class="btn buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="place-item">
@@ -108,7 +108,7 @@
                                 <h3 class="place-heading">San Francisco</h3>
                                 <p class="place-time">Sun 29 Nov 2016</p>
                                 <p class="place-dsc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="buy-btn">Buy Tickets</a>
+                                <button class="btn buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -128,6 +128,66 @@
         <div id="footer">
 
         </div>
+
+        <div class="modal js-modal">
+            <div class="modal-container js-modal-container">
+                <div class="modal-close js-modal-close">
+                    <i class="ti-close"></i>
+                </div>
+                <header class="modal-header">
+                    <i class="ti-bag icon-heading-padding"></i>
+                    Tickets
+                </header>
+
+                <div class="modal-body">
+                    <label for="ticket-quantity" class="modal-label">
+                        <i class="ti-shopping-cart"></i>
+                        Tickets, $15 per person
+                    </label>
+                    <input type="text" id="ticket-quantity" class="modal-input" placeholder="How many?">
+                    <label for="ticket-email" class="modal-label">
+                        <i class="ti-user"></i>
+                        Send To
+                    </label>
+                    <input type="email" id="ticket-email" class="modal-input" placeholder="Enter email">
+                
+                    <button class="modal-btn">
+                        Pay
+                        <i class="ti-check"></i>
+                    </button>
+                </div>
+                <footer class="modal-footer">
+                    <p class="modal-help">Need <a href="" class="">help?</a></p>
+                </footer>
+            </div>
+        </div>
     </div>
+    
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket')
+        const modal = document.querySelector('.js-modal')
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close')
+
+        function showBuyTickets() {
+            modal.classList.add('open')
+        }
+
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+        }
+
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        modalClose.addEventListener('click', hideBuyTickets)
+
+        modal.addEventListener('click', hideBuyTickets)
+
+        modalContainer.addEventListener('click', function (event) {
+            event.stopPropagation();
+        })
+    </script>
 </body>
 </html>
