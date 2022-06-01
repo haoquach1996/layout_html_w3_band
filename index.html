@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Band</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
 </head>
 <body>
@@ -33,6 +34,9 @@
             <!-- Begin : Seach button -->
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
+            </div>
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
             </div>
             <!-- End : Search button -->
         </div>
@@ -224,6 +228,39 @@
         modalContainer.addEventListener('click', function (event) {
             event.stopPropagation();
         })
+    </script>
+
+    <script>
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var headerHeight = header.clientHeight
+
+        // Show/hide mobile menu
+        mobileMenu.onclick = function () {
+            let isClosed = header.clientHeight === headerHeight;
+            if (isClosed) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = null;
+            }
+        }
+
+        // Auto hide mobile menu when click item menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+        
+        function hideMenu() {
+            header.style.height = null;
+        };
+
+        for (let menuItem of menuItems) {
+            let isParentMenu = menuItem.nextElementSibling && menuItem.nextElementSibling.classList.contains('subnav');
+            if (!isParentMenu) {
+                menuItem.addEventListener('click', hideMenu)
+            };
+            
+        }
+
+
     </script>
 </body>
 </html>
