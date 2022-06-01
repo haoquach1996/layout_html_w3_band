@@ -34,12 +34,18 @@ html {
 }
 
 .text-center {
-    text-align: center;
+    text-align: center !important;
 }
 
 .row {
     margin-left: -8px;
     margin-right: -8px;
+}
+
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .col {
@@ -48,12 +54,24 @@ html {
     padding-right: 8px;
 }
 
+.col-1 {
+    width: 100%;
+}
+
 .col-2 {
     width: 50%;
 }
 
 .col-3 {
     width: 33.3333%;
+}
+
+.mt-8 {
+    margin-top: 8px !important;
+}
+
+.mt-16 {
+    margin-top: 16px !important;
 }
 
 /* Main */
@@ -295,11 +313,6 @@ html {
     background-color: #ccc;
 }
 
-
-#footer {
-
-}
-
 .icon-heading-padding {
     padding-right: 16px;
 }
@@ -383,6 +396,7 @@ html {
     opacity: 0.9;
 }
 
+
 .modal-footer {
     padding: 16px;
     text-align: right;
@@ -401,4 +415,40 @@ html {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.contact-content {
+    margin-top: 48px;
+}
+
+.contact-info {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.contact-info i[class*="ti-"] {
+    width: 30px;
+    display: inline-block;
+}
+
+.contact-form {
+    font-size: 15px;
+}
+
+.contact-form .form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.contact-form .form-submit-btn {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    padding: 10px 16px;
+    float: right;
+}
+
+#footer {
+
 }
